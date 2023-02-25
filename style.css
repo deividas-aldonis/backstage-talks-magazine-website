@@ -1,9 +1,12 @@
 :root {
-  --bg-issue-1: #e30512;
-  --bg-issue-2: #1d3fbb;
-  --bg-issue-3: #ffbe00;
-  --bg-issue-4: #ff6519;
-  --bg-issue-6: #fff;
+  --fs-normal: 1.125rem;
+  --fs-card-link: 0.9375rem;
+
+  --fw-normal: 400;
+  --fw-semi: 500;
+  --fw-bold: 700;
+
+  --clr-link: #fff;
 }
 
 /*
@@ -72,11 +75,20 @@ h6 {
 /* general styling */
 
 body {
-  font-family: sans-serif;
-  font-size: 100px;
-  /* background-color: #fff; */
-
+  font-family: "Roboto", sans-serif;
   transition: background-color 500ms ease-out 200ms;
+}
+
+a,
+a:link,
+a:visited {
+  color: var(--clr-link);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 .container,
@@ -88,6 +100,10 @@ body {
 
 /* utilities */
 
+.my-3 {
+  margin: 0.75rem 0;
+}
+
 /* cards */
 .cards {
   overflow: hidden;
@@ -97,8 +113,26 @@ body {
   transition: all 700ms ease;
 }
 
-article {
+.card.card--pink {
+  --clr-link: #e568ac;
+}
+
+.card {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  font-size: var(--fs-card-link);
+  font-weight: var(--fw-bold);
+}
+
+.card__img {
+  width: 80%;
+  max-width: 420px;
+}
+
+.card__title {
+  font-weight: var(--fw-semi);
+  font-size: var(--fs-normal);
 }
