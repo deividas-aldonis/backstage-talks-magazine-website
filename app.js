@@ -4,6 +4,22 @@ const cards = document.querySelectorAll(".card");
 let currentCard = 0;
 let lastCard = cards.length - 1;
 
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      const intersecting = entry.isIntersecting;
+
+      if (intersecting) {
+        const bgColor = entry.target.dataset.backgroundColor;
+        document.body.style.backgroundColor = bgColor;
+      }
+    });
+  },
+  { threshold: 0.5 }
+);
+
+cards.forEach((card) => observer.observe(card));
+
 const removeWheelEventListener = () => {
   window.removeEventListener("wheel", scroll);
 };
@@ -35,8 +51,12 @@ const scroll = (e) => {
 
   if (dir === 1) {
     cardsContainer.style.transform = `translateY(${-100 * currentCard}%)`;
+    const bgColor = cards[currentCard].dataset.backgroundColor;
+    document.body.style.backgroundColor = bgColor;
   } else {
     cardsContainer.style.transform = `translateY(${-100 * currentCard}%)`;
+    const bgColor = cards[currentCard].dataset.backgroundColor;
+    document.body.style.backgroundColor = bgColor;
   }
 };
 

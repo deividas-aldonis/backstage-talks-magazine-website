@@ -74,6 +74,9 @@ h6 {
 body {
   font-family: sans-serif;
   font-size: 100px;
+  /* background-color: #fff; */
+
+  transition: background-color 500ms ease-out 200ms;
 }
 
 .container,
@@ -91,7 +94,7 @@ body {
 }
 
 .cards__container {
-  transition: transform 0.5s ease-out;
+  transition: all 700ms ease;
 }
 
 article {
