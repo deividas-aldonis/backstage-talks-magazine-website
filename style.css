@@ -3,10 +3,12 @@
   --fs-card-link: 0.9375rem;
 
   --fw-normal: 400;
-  --fw-semi: 500;
   --fw-bold: 700;
 
-  --clr-link: #fff;
+  --clr-link: #000;
+
+  --container-z-index: 10;
+  --header-z-index: 100;
 }
 
 /*
@@ -72,10 +74,18 @@ h6 {
   overflow-wrap: break-word;
 }
 
+/* ISSUES!!!!! */
+
+/*
+ change link css var to class
+*/
+
 /* general styling */
 
 body {
   font-family: "Roboto", sans-serif;
+  font-size: var(--fs-normal);
+  font-weight: var(--fw-bold);
   transition: background-color 500ms ease-out 200ms;
 }
 
@@ -83,6 +93,8 @@ a,
 a:link,
 a:visited {
   color: var(--clr-link);
+
+  font-weight: inherit;
   text-decoration: none;
   cursor: pointer;
 }
@@ -98,13 +110,41 @@ a:hover {
   height: 100%;
 }
 
+.container {
+  position: relative;
+  z-index: var(--container-z-index);
+}
+
 /* utilities */
 
 .my-3 {
   margin: 0.75rem 0;
 }
 
+.center {
+  --margin-x: 20px;
+
+  margin: 0 var(--margin-x);
+  width: calc(100% - var(--margin-x) * 2);
+}
+
+/* header */
+
+.header {
+  position: absolute;
+  top: 20px;
+  display: flex;
+  justify-content: space-between;
+
+  z-index: var(--header-z-index);
+}
+
+.header__logo {
+  width: 260px;
+}
+
 /* cards */
+
 .cards {
   overflow: hidden;
 }
@@ -118,13 +158,14 @@ a:hover {
 }
 
 .card {
+  --clr-link: #fff;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
   font-size: var(--fs-card-link);
-  font-weight: var(--fw-bold);
 }
 
 .card__img {
@@ -133,6 +174,31 @@ a:hover {
 }
 
 .card__title {
-  font-weight: var(--fw-semi);
   font-size: var(--fs-normal);
+}
+
+/* footer */
+.footer {
+  --clr-link: #000;
+
+  position: absolute;
+  bottom: 20px;
+
+  display: flex;
+  flex-direction: column;
+  max-width: 320px;
+}
+
+.footer a {
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  text-decoration: none;
+}
+
+.footer__copyright {
+  font-size: 12px;
+  font-weight: var(--fw-normal);
+  margin-bottom: 20px;
 }
