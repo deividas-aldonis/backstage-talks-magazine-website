@@ -187,13 +187,21 @@ a:hover {
   margin-bottom: 20px;
 }
 
-.footer__privacy-policy {
-  margin-bottom: 50px;
-}
-
 .footer__contact {
   margin: 50px 0;
   text-align: center;
+}
+
+.footer__menu {
+  display: none;
+}
+
+.menu-link {
+  cursor: pointer;
+}
+
+.menu-link.current {
+  font-weight: bold;
 }
 
 @media (min-width: 768px) {
@@ -238,7 +246,20 @@ a:hover {
     top: 20px;
     right: 20px;
   }
+
+  .footer__menu {
+    position: absolute;
+    z-index: 100;
+    bottom: 20px;
+    right: 20px;
+
+    display: flex;
+    flex-direction: column;
+    font-weight: var(--fw-normal);
+    list-style-type: none;
+  }
 }
+
 /* fullpage js */
 
 .fp-watermark {

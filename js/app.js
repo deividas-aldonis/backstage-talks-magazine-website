@@ -2,10 +2,12 @@ import "./fullpage.min.js";
 
 const cards = document.querySelectorAll(".card");
 
+const menuLinks = document.querySelectorAll(".menu-link");
+
 const myFullpage = new fullpage("#fullpage", {
   menu: "#menu",
   lockAnchors: false,
-  anchors: ["firstPage", "secondPage"],
+  anchors: ["issue-6", "issue-5", "issue-4", "issue-3", "issue-2", "issue-1"],
   navigation: false,
   navigationPosition: "right",
   navigationTooltips: ["firstSlide", "secondSlide"],
@@ -46,14 +48,14 @@ const myFullpage = new fullpage("#fullpage", {
 
   // Design
   controlArrows: true,
-  controlArrowsHTML: [
-    '<li class="fp-arrow">1</li>',
-    '<li class="fp-arrow">2</li>',
-  ],
+  // controlArrowsHTML: [
+  //   '<li class="fp-arrow">1</li>',
+  //   '<li class="fp-arrow">2</li>',
+  // ],
   verticalCentered: true,
   paddingTop: "3em",
   paddingBottom: "10px",
-  fixedElements: ".header, .footer .footer__contact",
+  fixedElements: ".header, .footer, .footer__contact, .footer__menu",
   responsiveWidth: 992,
   responsiveHeight: 650,
   responsiveSlides: false,
@@ -86,11 +88,17 @@ const myFullpage = new fullpage("#fullpage", {
   onLeave: function (origin, destination, direction, trigger) {
     const { backgroundColor } = destination.item.dataset;
     document.body.style.backgroundColor = backgroundColor;
+
+    menuLinks.forEach((link) => link.classList.remove("current"));
+    menuLinks[destination.index].classList.add("current");
   },
   afterLoad: function (origin, destination, direction, trigger) {
     cards.forEach((card) => {
       card.style.minHeight = `100vh`;
     });
+
+    menuLinks.forEach((link) => link.classList.remove("current"));
+    menuLinks[destination.index].classList.add("current");
   },
   afterRender: function () {},
   afterResize: function (width, height) {
