@@ -6,7 +6,7 @@ const menuLinks = document.querySelectorAll(".menu-link");
 
 const myFullpage = new fullpage("#fullpage", {
   menu: "#menu",
-  lockAnchors: false,
+  lockAnchors: true,
   anchors: ["issue-6", "issue-5", "issue-4", "issue-3", "issue-2", "issue-1"],
   navigation: false,
   navigationPosition: "right",
