@@ -1,8 +1,8 @@
 import "./fullpage.min.js";
 
 const cards = document.querySelectorAll(".card");
-
 const menuLinks = document.querySelectorAll(".menu-link");
+const menu = document.getElementById("menu");
 
 const myFullpage = new fullpage("#fullpage", {
   menu: "#menu",
@@ -118,4 +118,14 @@ const myFullpage = new fullpage("#fullpage", {
   ) {},
   onSlideLeave: function (section, origin, destination, direction, trigger) {},
   onScrollOverflow: function (section, slide, position, direction) {},
+});
+
+menu.addEventListener("click", (e) => {
+  const linkContainer = e.target.closest("li");
+
+  if (!linkContainer) return;
+  const link = linkContainer.firstElementChild;
+  const sectionToScroll = +link.dataset.section;
+
+  myFullpage.moveTo(sectionToScroll);
 });
